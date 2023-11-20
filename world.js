@@ -6,7 +6,8 @@ window.addEventListener('load', function() {
     
     lookupBtn.addEventListener('click',function(event) {
         event.preventDefault();
-        let country = document.querySelector("#country").value.trim();
+        let countryInput = document.querySelector("#country");
+        let country = encodeURIComponent(countryInput.value.trim());
     
         fetch(`world.php?country=${country}&lookup=country`)
             .then(response =>{
@@ -18,14 +19,14 @@ window.addEventListener('load', function() {
             })
             .then(data => {
                 resultDiv.innerHTML = data;
-
             })
             .catch(error => alert(error));
     });
 
     lookupCityBtn.addEventListener('click',function(event) {
         event.preventDefault();
-        let country = document.querySelector("#country").value.trim();
+        let countryInput = document.querySelector("#country");
+        let country = encodeURIComponent(countryInput.value.trim());
     
         fetch(`world.php?country=${country}&lookup=cities`)
             .then(response =>{
@@ -37,7 +38,6 @@ window.addEventListener('load', function() {
             })
             .then(data => {
                 resultDiv.innerHTML = data;
-
             })
             .catch(error => alert(error));
     });
